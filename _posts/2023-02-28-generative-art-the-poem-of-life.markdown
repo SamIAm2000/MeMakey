@@ -17,19 +17,24 @@ ESPs in the dark
 The one above that says "I am struggling" is mine.
 
 ## Creative Vision
-I wanted to envision my ESP-32 as a living being that experienced emotions and random happenings in life. It would start up, experience things, rest, and then repeat again. The waking and sleeping of the machine also serves as a metaphor for life where we are born, get involved in a series of random, spontaneous happenings thorughout our lives, and then we die.
+I wanted to envision my ESP-32 as a living being that experienced emotions and random happenings in life. It would start up, experience things, rest, and then repeat again. The waking and sleeping of the machine also serves as a metaphor for life where we are born, get involved in a series of random, spontaneous happenings throughout our lives, and then we die.
 
 The installation space would have other ESP-32s in the same space, so I thought that making my board imitate a living being would be a good way to interact with the other boards and invite viewers to regard these small specks that light up as individual lives flashing in front of them. Each board is merely a speck amongst the multitude, just as in the ending sequence of my program, there are stars to show that's where come from and what we'll eventually return to.
 
+## Setup
+Since our batteries were malfunctioning and we could not set up the ESP-32s independently without a battery, our professor very generously dedicated his time to building a board that could connect up to 15 ESP-32s to a power source. They are connected via USB-C connectors. It looks like this:
+
+![empty_board](/MeMakey/assets/empty_board.jpg)
+
 ## Tech and Codey Part
-My complete arduino code can be found on my Github [here]().
+My complete arduino code can be found on my Github [here](https://github.com/SamIAm2000/CS-3930-Creative-Embedded-Systems/tree/main/Module_1).
 
 The basic structure of the program is 
 1. The Intro Sequence, where the program wakes up and comes into being from an infinitude of stars
 2. The Main Sequence, where the program randomly flashes 20 different states of being, "I am ..."
 3. The Ending Sequence, where the program falls back asleep and says farewell.
 
-The randomly 20 states of being are stored in a struct `msg_numbers` where each number corresponds to a state. See below:
+The randomly 20 States of Being are stored in a struct `msg_numbers` where each number corresponds to a State. See below:
 
 {% highlight ruby %}
 static struct {
@@ -90,31 +95,40 @@ for (int i = 0; i < 20; i++){
 }
 {% endhighlight %}
 
-Some of the states also had subtext that came along with them such as `beep boop 00101011010` that would be returned whenever the screen displayed "I am coding." This I put into another function.
+Some of the states also had subtext that came along with them such as `beep boop 00101011010` that would be returned whenever the screen displayed "I am coding." This I put into another function called do motion. I was originally going to include motions such as rotating the screen etc. that triggered when a certain number was called, but I did not end up implementing it. If one were to wish to do so, they could just alter the code in the do_motion function:
+
+{% highlight ruby %}
+void do_motion(int n){
+  delay(500);
+  char * msg = NULL;
+  if (n==0){
+    msg = "hello world :0";
+    draw_mini_text(msg); 
+  } else if (n == 3){
+    msg = "please don't let me fall";
+    draw_mini_text(msg); 
+  } else if (n == 4){
+    msg = "weeeeeeeeee";
+    draw_mini_text(msg); 
+  } else if (n == 7){
+    msg = "hmmmmmmm";
+    draw_mini_text(msg); 
+  } else if (n == 8){
+    msg = "what a beautiful world";
+    draw_mini_text(msg); 
+  } else if (n == 13){
+    msg = ":)";
+    draw_mini_text(msg); 
+  } else if (n == 15){
+    msg = ":(";
+    draw_mini_text(msg); 
+  } else if (n == 17){
+    msg = "beep boop 00101011010";
+    draw_mini_text(msg); 
+  }  
+}
+{% endhighlight %}
 
 ## Further Notes to Consider
 Orientation: the orientation of the board can be adjusted using the rotate function, but because of last minute changes in the plan (i.e. boards frying and batteries smoking), my board had to be displayed vertically. Use the function rotate(#) to rotate the board.
 
-<!-- You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
-
-Jekyll requires blog post files to be named according to the following format:
-
-`YEAR-MONTH-DAY-title.MARKUP`
-
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/ -->
