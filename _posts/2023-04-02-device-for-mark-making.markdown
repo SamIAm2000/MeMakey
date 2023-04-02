@@ -21,10 +21,12 @@ This project is about context and interpretation. When we look at a text or imag
 
 Through the joystick and button, users will move a short text phrase or character around on the canvas where they can press a button to set it down. Once the button is pressed, the mark is made on the canvas. The users can choose to make another mark, however, any marks that have been made cannot be deleted; it becomes part of the canvas for the next mark. Aside from setting down a mark, the machine also blurs and adds noise to the canvas whenever a mark is made, which means eventually, marks made earlier will be subject to many layers of blurring and become less visible and less distinct to signify the passage of time that blurs memory. 
 
-Mark-making is an ongoing process. You can change the marks that you make, yet you can't change the marks others have made before you. History has happened and is immutbale, yet the way we look at history can still change. 
+Mark-making is an ongoing process. You can change the marks that you make, yet you can't change the marks others have made before you. History has happened and is immutable, yet the way we look at history can still change. 
 
 ![drawing1](/MeMakey/assets/mod2/drawing1.png)
+-"Burn" 4/2/2023
 Full-screen drawing made by the Device
+In this piece, I used two Chinese characters, "火" which means fire and "木" which means wood. In Chinese, when you combine multiples of the fire characters, you get a new word, e.g., "炎" with two of the fire characters means hot and "焱" with three means flames. A similar thing can happen with the wood character. By layering these characters upon each other and altering the font size and placement, I wanted to play with the shapes of the characters themselves and juxtapose their meanings. 
 
 ![drawing3](/MeMakey/assets/mod2/drawing3.png)
 
