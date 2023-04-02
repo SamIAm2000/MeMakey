@@ -1,19 +1,19 @@
 ---
 layout: post
-title:  "Signage: A Device for Mark-Making"
+title:  "Interactive Art: A Device for Mark-Making"
 date:   2023-04-02 17:05:34 -0500
 categories: general
 ---
 
-# Signage: A Device for Mark-Making
+# Signage
 Interactive art created on an ESP-32.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4seEMUTgprs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4LrRDydORug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-![concrete_front_view](/MeMakey/assets/concrete_front_view.JPG)
+![concrete_front_view](/MeMakey/assets/mod2/concrete_front_view.JPG)
 Concrete enclosure
 
-![concrete_other_side_view](/MeMakey/assets/concrete_other_side_view.JPG)
+![concrete_other_side_view](/MeMakey/assets/mod2/concrete_other_side_view.JPG)
 Side view of concrete enclosure
 
 ## Creative Vision
@@ -23,32 +23,27 @@ Through the joystick and button, users will move a short text phrase or characte
 
 Mark-making is an ongoing process. You can change the marks that you make, yet you can't change the marks others have made before you. History has happened and is immutbale, yet the way we look at history can still change. 
 
-![drawing_1](/MeMakey/assets/drawing_1.JPG)
-Drawing made by the Device
+![drawing1](/MeMakey/assets/mod2/drawing1.png)
+Full-screen drawing made by the Device
+
+![drawing3](/MeMakey/assets/mod2/drawing3.png)
+
+500*500 pixels drawing
 
 ## Setup
 I chose to enclose the hardware (the ESP-32, the joystick, the button, and a breadboard) in a concrete enclosure. I cast the concrete one plane at a time out of molds made from cardboard boxes. The metal bars are for viewing, so that viewers can see a trace of the hardware that appears ensnared in the concrete. There is also a gap between the metal bars to push the hardware through. The concrete enclosure is purely for aesthetic reasons and is not necessary to run the code.
 
 To set up the device, you only need to wire the button and joystick up to the ESP-32 using the breadboard and flash the Arduino code to the ESP-32. The code will allow the ESP-32 to send the numerical values of the joystick and button through serial communication to your computer. After connecting the ESP-32 to your computer with a USB-C cable, running the Processing code will be able to access the serial input and translate that to moving and setting marks on the canvas.
 
-
-![concrete_set_up](/MeMakey/assets/concrete_set_up.JPG)
-Set up
-
 ## Code
-My complete code for the ESP-32 and Processing can be found on my Github [here](https://github.com/SamIAm2000/CS-3930-Creative-Embedded-Systems/tree/main/Module_1).
+My complete code for the ESP-32 and Processing can be found on my Github [here](https://github.com/SamIAm2000/CS-3930-Creative-Embedded-Systems/tree/main/Module_2).
 
 The Arduino code is the standard set up code to wire up a joystick and button and send signals through serial communication. The .pde Processing code takes in the raw x,y values of the joystick and converts it to up, down, left, right. Pressing the button will trigger a function that saves the entire canvas while adding blur and random noise. Pressing the joystick's switch will also blur, add noise, and save the canvas but it will also invert the whole canvas' colors.
 
 The Processing code mainly works by loading an image called "drawing.png" that's saved in the same folder as the Processing sketch every time the draw() function runs. When the user sets their mark and saves the image, the new image overwrites the previous "drawing.png" so there is no going back on mark-making; no room for reversals or erasing "mistakes."
 
-## More Pictures
+![concrete_set_up](/MeMakey/assets/mod2/concrete_set_up.png)
+Set up
 
-![concrete_side_view](/MeMakey/assets/concrete_side_view.JPG)
-Side view of concrete enclosure
-
-![drawing1](/MeMakey/assets/drawing1.png)
-Sample full-screen drawing
-
-![drawing3](/MeMakey/assets/drawing3.png)
-Sample 500*500 pixels drawing
+![concrete_side_view](/MeMakey/assets/mod2/concrete_side_view.JPG)
+Another side view of concrete enclosure
