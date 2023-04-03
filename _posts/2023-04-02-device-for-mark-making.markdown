@@ -24,9 +24,10 @@ Through the joystick and button, users will move a short text phrase or characte
 Mark-making is an ongoing process. You can change the marks that you make, yet you can't change the marks others have made before you. History has happened and is immutable, yet the way we look at history can still change. 
 
 ![drawing1](/MeMakey/assets/mod2/drawing1.png)
--"Burn" 4/2/2023
-Full-screen drawing made by the Device
+-"Burn" 4/2/2023 Full-screen drawing made by the Device
+
 In this piece, I used two Chinese characters, "火" which means fire and "木" which means wood. In Chinese, when you combine multiples of the fire characters, you get a new word, e.g., "炎" with two of the fire characters means hot and "焱" with three means flames. A similar thing can happen with the wood character. By layering these characters upon each other and altering the font size and placement, I wanted to play with the shapes of the characters themselves and juxtapose their meanings. 
+
 
 ![drawing3](/MeMakey/assets/mod2/drawing3.png)
 
