@@ -5,10 +5,14 @@ date:   2023-05-08 22:40:30 -0500
 categories: general
 ---
 
-# Electric Meat
-Mutual capactive touch silicone skin for the ESP-32 and Arduino
+# a.k.a. I'm Fragile
+Mutual capacitive touch silicone skin for the ESP-32 and Arduino with computer vision and blob detection.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4seEMUTgprs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+It also screams.
+
+Link to GitHub [here](https://github.com/SamIAm2000/silicone-skin-sensing).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eofv4B8JZcw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ![DSCF9061.JPG](/MeMakey/assets/final/DSCF9061.JPG)
 Layout
@@ -17,7 +21,9 @@ Layout
 Close up of silicone skin
 
 ## Creative Vision
-What is skin and why do we need it? This piece explores the themes of contact and what it means to exist. We're all just walking and talking bags of skin after all. Upon contact, the silicone skin will cause the machine to scream depending on how large the contact area and how big the pressure at which you touch the skin. Actions such as slapping, punching, stroking, clawing, atc. are all welcome.
+What is skin and why do we need it? This piece explores the themes of contact and what it means to exist. We're all just walking and talking bags of skin after all. Upon contact, the silicone skin will cause the machine to scream depending on how large the contact area and how big the pressure at which you touch the skin. Actions such as slapping, punching, stroking, clawing, etc. are all welcome.
+
+This piece originally was meant to be called "I'm Fragile." I wanted it to be a play on weight and pressure, both the pressure we feel upon ourselves and the weight we give others. By interacting with my silicone skin mat, pressure is tranformed into loud screaming.
 
 This piece is rather lighthearted and silly, but has the potential to be much more. The silicone skin, once built, is basically just a touch screen that feels like flesh and could have many potential applications in human-computer interaction, interactive design, accessible technology etc. I built the skin and programmed it to scream, but you can take it and do much more.
 
@@ -30,6 +36,9 @@ I have built two versions of this project, one on an ESP-32 and another on the A
 
 ![IMG_5492.jpg](/MeMakey/assets/final/IMG_5492.jpg)
 3*3 sensing grid on the ESP-32
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tObpSXN-SBA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+Video with 3*3 grid on ESP-32
 
 Through random luck, I did happen to find a break-out board that supported up to 12 capacitive touch sensors lying around, so I decided to use that instead. Due to unknown reasons, I could not get this breakout board (linked [here](https://www.adafruit.com/product/1982) to work (I think the problem had to do with the ESP-32's I2C protocol being a little wonky), so I decided to use an Arduino (which did work) instead.
 
@@ -84,7 +93,7 @@ The breakout board sends the level of each sensor back to the Arduino. Note that
 
 The Arduino code sends the values of each of the 12 sensors through the serial protocol back to my computer, where I use Processing to process the values. I multiply the x values and y values respectively with each other to get 36 values for 36 points. This is stored in an integer array of size 36. This calculation is done in the getRawPoints() function.
 
-`
+{% highlight ruby %}
 int[] getRawPoints(int[] vals){
   int[] xvalues = new int[xvals];
     int[] yvalues = new int[yvals];
@@ -103,20 +112,20 @@ int[] getRawPoints(int[] vals){
     }
     return rawPoints;
 }
-`
+{% endhighlight %}
 
 I also have another array that stores the average of 20 reads for calibration. Through comparing the raw points with the averaged points, I can find out which sensors have changed in value. I also have variables MIN_THRESHOLD and MAX_THRESHOLD that can be changed by the user depending on the sensitivity of the sensors. These thresholds determine how big of a change in charge will be detected as a touch.
-`
+{% highlight ruby %}
   for (int i = 0; i < squares; i++) {
     int temp = avgPoints[i]-rawPoints[i];
     temp = constrain(temp, MIN_THRESHOLD, MAX_THRESHOLD);
     adjPoints[i] = int(map(temp, MIN_THRESHOLD, MAX_THRESHOLD, 0, 255)); //map to grayscale
   }
-`
+{% endhighlight %}
 
 For the visualization, I have a drawSquares function that visualizes the grid by drawing squares corresponding to the sensing grid. The brightness of the square is determined by the amount of change in the values sensed at that location.
 
-`
+{% highlight ruby %}
 void drawSquares() {
   skinGraphic.beginDraw();
   skinGraphic.noStroke();
@@ -131,118 +140,17 @@ void drawSquares() {
   }
   skinGraphic.endDraw();
 }
-`
+{% endhighlight %}
 
 Finally, I ran the image produced through [computer vision](https://github.com/atduskgreg/opencv-processing) and [blob detection](http://www.v3ga.net/processing/BlobDetection/) to find shapes and then use the size of the shapes to determine how loudly the computer will scream.
 
 ## Further thoughts and reflections
-The breakout board that I used for the skin used I2C to communicate with the microcontroller (the Arduino in this case). I could connect multiple
+The breakout board that I used for the skin used I2C to communicate with the microcontroller (the Arduino in this case) technically allows multiple boards to be connected the same time with different I2C addresses. Perhaps for future versions, I could add more conductive threads in a denser layout for a more sensitive, more accurate silicone skin mat.
 
-For my purposes, the computer vision and blob detection might have been a little unnecessary because I could have just used the area of the bright squares to calculate how loudly the computer should scream. However, I still chose to implement it because 
+For my purposes, the computer vision and blob detection might have been a little unnecessary because I could have just used the area of the bright squares to calculate how loudly the computer should scream. However, I still chose to implement it because getting the computer vision and blob detection working meant that I could be able to detect what specific types of gestures and motions were being made by the user. Henceforth, it could function as an actual touch screen, just like the one on your smartphone.
 
-## Technology
-My complete arduino code can be found on my Github [here](https://github.com/SamIAm2000/CS-3930-Creative-Embedded-Systems/tree/main/Module_1).
+![DSCF9081.JPG](/MeMakey/assets/final/DSCF9081.JPG)
+Electric Meat in action
 
-The basic structure of the program is 
-1. The Intro Sequence, where the program wakes up and comes into being from an infinitude of stars
-2. The Main Sequence, where the program randomly flashes 20 different states of being, "I am ..."
-3. The Ending Sequence, where the program falls back asleep and says farewell.
-
-The randomly 20 States of Being are stored in a struct `msg_numbers` where each number corresponds to a State. See below:
-
-{% highlight ruby %}
-static struct {
-  int num; 
-  char *msg;
-} msg_numbers[] = {
-	{ 1, "floating" },
-	{ 2, "drifting" },
-	{ 3, "hanging" },
-	{ 4, "spinning" },
-	{ 5, "trying" },
-	{ 6, "existing" },
-	{ 7, "wondering" },
-	{ 8, "wandering" },
-	{ 9, "doing my best" },
-	{ 10, "thinking" },
-	{ 11, "not thinking" },
-	{ 12, "playing" },
-	{ 13, "happy" },
-	{ 14, "ecstatic" },
-	{ 15, "in pain" },
-  { 16, "hungry" },
-  { 17, "coding" },
-  { 18, "struggling" },
-  { 19, "weary" },
-  { 20, "tired" },
-};
-{% endhighlight %}
-
-The randomly generated states of being come from an array that has the numbers 1-20 randomly shuffled using the random number generator. I chose to use an array instead of just randomly generated numbers form 1-20 so that there would be no repetition. See below:
-
-
-{% highlight ruby %}
-//shuffle array to get 20 non repetitive random numbers
-int array[20];
-for (int i = 0; i < 20; i++) {     // fill array
-  array[i] = i+1;
-}
-for (int i = 0; i < 20; i++) {    // shuffle array
-  int temp = array[i];
-  Serial.println(array[i]);
-  int randomIndex = rand() % 20;
-  array[i] = array[randomIndex];
-  array[randomIndex] = temp;
-}
-
-//loops 20 times to print different states of being
-for (int i = 0; i < 20; i++){
-  randNum = array[i];
-  msg = get_msg(randNum);
-  sprite_print(msg);
-  do_motion(randNum);
-  delay(500);
-
-  //clear text
-  stext.drawString("                                           ", WIDTH/2, HEIGHT/2, 4);
-  stext.pushSprite(0, 0);
-}
-{% endhighlight %}
-
-Some of the states also had subtext that came along with them such as `beep boop 00101011010` that would be returned whenever the screen displayed "I am coding." This I put into another function called do motion. I was originally going to include motions such as rotating the screen etc. that triggered when a certain number was called, but I did not end up implementing it. If one were to wish to do so, they could just alter the code in the do_motion function:
-
-{% highlight ruby %}
-void do_motion(int n){
-  delay(500);
-  char * msg = NULL;
-  if (n==0){
-    msg = "hello world :0";
-    draw_mini_text(msg); 
-  } else if (n == 3){
-    msg = "please don't let me fall";
-    draw_mini_text(msg); 
-  } else if (n == 4){
-    msg = "weeeeeeeeee";
-    draw_mini_text(msg); 
-  } else if (n == 7){
-    msg = "hmmmmmmm";
-    draw_mini_text(msg); 
-  } else if (n == 8){
-    msg = "what a beautiful world";
-    draw_mini_text(msg); 
-  } else if (n == 13){
-    msg = ":)";
-    draw_mini_text(msg); 
-  } else if (n == 15){
-    msg = ":(";
-    draw_mini_text(msg); 
-  } else if (n == 17){
-    msg = "beep boop 00101011010";
-    draw_mini_text(msg); 
-  }  
-}
-{% endhighlight %}
-
-## Further Notes to Consider
-Orientation: the orientation of the board can be adjusted using the rotate function, but because of last minute changes in the plan (i.e. boards frying and batteries smoking), my board had to be displayed vertically. Use the function rotate(#) to rotate the board.
-
+![DSCF9099.JPG](/MeMakey/assets/final/DSCF9099.JPG)
+more Electric Meat
