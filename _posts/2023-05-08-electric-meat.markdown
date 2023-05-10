@@ -7,7 +7,7 @@ categories: general
 
 Mutual capacitive touch silicone skin for the ESP-32 and Arduino with computer vision and blob detection.
 
-It also screams.
+It also screams. Loudly.
 
 Link to GitHub [here](https://github.com/SamIAm2000/silicone-skin-sensing).
 
@@ -22,7 +22,7 @@ Close up of silicone skin
 ## Creative Vision
 What is skin and why do we need it? This piece explores the themes of contact and what it means to exist. We're all just walking and talking bags of skin after all. Upon contact, the silicone skin will cause the machine to scream depending on how large the contact area and how big the pressure at which you touch the skin. Actions such as slapping, punching, stroking, clawing, etc. are all welcome.
 
-This piece originally was meant to be called "I'm Fragile." I wanted it to be a play on weight and pressure, both the pressure we feel upon ourselves and the weight we give others. By interacting with my silicone skin mat, pressure is tranformed into loud screaming.
+This piece originally was meant to be called "I'm Fragile." I wanted it to be a play on weight and pressure, both the pressure we feel upon ourselves and the weight we give others. By interacting with my silicone skin mat, pressure is tranformed into loud screaming. The harder you press it, the louder it screams.
 
 This piece is rather lighthearted and silly, but has the potential to be much more. The silicone skin, once built, is basically just a touch screen that feels like flesh and could have many potential applications in human-computer interaction, interactive design, accessible technology etc. I built the skin and programmed it to scream, but you can take it and do much more.
 
