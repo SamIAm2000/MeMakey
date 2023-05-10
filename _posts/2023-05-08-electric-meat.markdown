@@ -5,7 +5,6 @@ date:   2023-05-08 22:40:30 -0500
 categories: general
 ---
 
-# a.k.a. I'm Fragile
 Mutual capacitive touch silicone skin for the ESP-32 and Arduino with computer vision and blob detection.
 
 It also screams.
