@@ -39,7 +39,7 @@ I have built two versions of this project, one on an ESP-32 and another on the A
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tObpSXN-SBA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 Video with 3*3 grid on ESP-32
 
-Through random luck, I did happen to find a break-out board that supported up to 12 capacitive touch sensors lying around, so I decided to use that instead. Due to unknown reasons, I could not get this breakout board (linked [here](https://www.adafruit.com/product/1982) to work (I think the problem had to do with the ESP-32's I2C protocol being a little wonky), so I decided to use an Arduino (which did work) instead.
+Through random luck, I did happen to find a break-out board that supported up to 12 capacitive touch sensors lying around, so I decided to use that instead. Due to unknown reasons, I could not get this breakout board (linked [here](https://www.adafruit.com/product/1982)) to work with an ESP-32 (I think the problem had to do with the ESP-32's I2C protocol being a little broken), so I decided to use an Arduino (which did work) instead.
 
 With 12 capactive touch sensors, I could have a 6*6 grid with 36 distinct points to sense from. This increase allowed much greater flexibility and sensitivity in getting the skin to function as a touch screen and pinpoint touch locations and pressure.
 
@@ -55,7 +55,6 @@ A lot of this heavily referenced the tutorial [here](https://marcteyssier.com/pr
 **Hardware** 
 - Arduino Uno 
 - Adafruit 12-Key Capacitive Touch Sensor Breakout - MPR121
- or just
 - ESP-32
 
 
